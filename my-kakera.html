@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8396986479593606" crossorigin="anonymous"></script>
+    <title data-i18n="mykakera-title">マイカケラ - CNP×RED° KAKERANFT</title>
+
+    <!-- OGP設定 -->
+    <meta property="og:title" content="マイカケラ - CNP×RED° KAKERANFT" />
+    <meta property="og:description" content="ウォレットを接続して、あなたが保有するKAKERA NFTを確認しましょう。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kakera.click/my-kakera.html" />
+    <meta property="og:image" content="https://kakera.click/ogp_image.png" />
+    <meta property="og:site_name" content="CNP×RED° KAKERANFT" />
+    <meta property="og:locale" content="ja_JP" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="マイカケラ - CNP×RED° KAKERANFT" />
+    <meta name="twitter:description" content="ウォレットを接続して、あなたが保有するKAKERA NFTを確認しましょう。" />
+    <meta name="twitter:image" content="https://kakera.click/ogp_image.png" />
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="my-kakera.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- ヘッダーセクション -->
+        <header class="header">
+            <div class="language-switcher">
+                <button class="lang-btn active">日本語</button>
+                <button class="lang-btn">English</button>
+            </div>
+            <h1 class="main-title" data-i18n="mykakera-title">マイカケラ</h1>
+            <nav class="nav">
+                <a href="index.html" class="nav-link" data-i18n="nav-home">トップページ</a>
+                <a href="kakera-info.html" class="nav-link" data-i18n="nav-info">KAKERANFTとは</a>
+                <a href="mint.html" class="nav-link" data-i18n="nav-mint">ミント方法</a>
+                <a href="about.html" class="nav-link" data-i18n="nav-system">KAKERA排出システム</a>
+                <a href="exchange.html" class="nav-link" data-i18n="nav-exchange">交換方法</a>
+                <a href="characters.html" class="nav-link" data-i18n="nav-characters">キャラクター紹介</a>
+            </nav>
+        </header>
+
+        <!-- ウォレット接続セクション -->
+        <section class="wallet-section">
+            <!-- 未接続時 -->
+            <div id="wallet-connect-section">
+                <p class="wallet-intro" data-i18n="mykakera-intro">
+                    ウォレットを接続して、あなたが保有するKAKERA NFTを確認しましょう。
+                </p>
+                <button id="connect-wallet-btn" class="connect-wallet-btn" onclick="openWalletModal()">
+                    <i class="fa-solid fa-wallet"></i>
+                    <span data-i18n="mykakera-connect">ウォレットを接続</span>
+                </button>
+            </div>
+
+            <!-- 接続済み時 -->
+            <div id="wallet-connected-section">
+                <div class="wallet-info">
+                    <div class="wallet-status"></div>
+                    <span id="wallet-name"></span>
+                    <span class="wallet-label" data-i18n="mykakera-connected">接続中:</span>
+                    <span id="wallet-address"></span>
+                </div>
+                <button id="disconnect-wallet-btn" class="disconnect-btn" onclick="disconnectWallet()" data-i18n="mykakera-disconnect">切断する</button>
+            </div>
+        </section>
+
+        <!-- ウォレット選択モーダル -->
+        <div id="wallet-modal" class="wallet-modal-overlay">
+            <div class="wallet-modal-content">
+                <div class="wallet-modal-header">
+                    <h3 data-i18n="mykakera-select-wallet">ウォレットを選択</h3>
+                    <button class="wallet-modal-close" onclick="closeWalletModal()">&times;</button>
+                </div>
+                <div id="wallet-list" class="wallet-modal-list"></div>
+                <div class="wallet-modal-footer">
+                    <p data-i18n="mykakera-modal-footer">Solana対応ウォレットで接続できます</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- NFT表示セクション -->
+        <section id="nft-section">
+            <h2 class="nft-section-title" data-i18n="mykakera-gallery-title">保有KAKERA NFT</h2>
+            <p id="nft-count"></p>
+
+            <!-- ローディング -->
+            <div id="nft-loading">
+                <div class="loading-spinner"></div>
+                <p class="loading-text" data-i18n="mykakera-loading">NFTを読み込み中...</p>
+            </div>
+
+            <!-- 空メッセージ -->
+            <div id="nft-empty">
+                <div class="empty-icon"><i class="fa-solid fa-box-open"></i></div>
+                <p class="empty-text" data-i18n="mykakera-empty">
+                    KAKERA NFTが見つかりませんでした。<br>
+                    マーケットプレイスでKAKERAを集めましょう！
+                </p>
+                <a href="https://magiceden.io/marketplace/cnp-red-kakera" target="_blank" rel="noopener noreferrer" class="marketplace-cta" data-i18n="mykakera-get-kakera">
+                    KAKERAを入手する
+                </a>
+            </div>
+
+            <!-- エラー表示 -->
+            <div id="nft-error">
+                <div class="error-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                <p class="error-message"></p>
+            </div>
+
+            <!-- NFTグリッド -->
+            <div id="nft-grid"></div>
+        </section>
+
+        <!-- 交換済みCNP RED°セクション -->
+        <section id="cnpred-section">
+            <h2 class="nft-section-title cnpred-section-title" data-i18n="mykakera-cnpred-title">交換済み CNP×RED°</h2>
+            <p id="cnpred-count"></p>
+
+            <!-- 空メッセージ -->
+            <div id="cnpred-empty">
+                <div class="empty-icon"><i class="fa-solid fa-crown"></i></div>
+                <p class="empty-text" data-i18n="mykakera-cnpred-empty">
+                    交換済みのCNP×RED°はまだありません。<br>
+                    11種類のKAKERAを集めてCNP×RED°と交換しましょう！
+                </p>
+            </div>
+
+            <!-- CNP RED°グリッド -->
+            <div id="cnpred-grid"></div>
+        </section>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <a href="https://magiceden.io/marketplace/cnp-red-kakera" target="_blank" rel="noopener noreferrer" class="btn-primary" data-i18n="mykakera-marketplace">マーケットプレイスで探す</a>
+            <a href="index.html" class="btn-secondary" data-i18n="btn-back">トップページへ</a>
+        </div>
+
+        <!-- フッター -->
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="policy.html" data-i18n="footer-policy">プライバシーポリシー・免責事項</a>
+            </div>
+            <p data-i18n="footer">&copy; 2025 CNP×RED° KAKERANFT</p>
+        </footer>
+    </div>
+    <script src="language.js"></script>
+    <script src="wallet.js"></script>
+</body>
+</html>

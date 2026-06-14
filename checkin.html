@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8396986479593606"
+        crossorigin="anonymous"></script>
+    <title data-i18n="checkin-title">デイリーチェックイン - CNP×RED° KAKERANFT</title>
+
+    <meta property="og:title" content="デイリーチェックイン - CNP×RED° KAKERANFT" />
+    <meta property="og:description" content="毎日Discordでログインしてチェックインするとポイントが貯まります。120PでKAKERA NFTのAL権を獲得できます！" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kakera.click/checkin.html" />
+    <meta property="og:image" content="https://kakera.click/ogp_image.png" />
+    <meta property="og:site_name" content="CNP×RED° KAKERANFT" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="デイリーチェックイン - CNP×RED° KAKERANFT" />
+    <meta name="twitter:description" content="毎日Discordでログインしてチェックインするとポイントが貯まります。120PでKAKERA NFTのAL権を獲得できます！" />
+    <meta name="twitter:image" content="https://kakera.click/ogp_image.png" />
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="checkin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- ヘッダー -->
+        <header class="header">
+            <div class="language-switcher">
+                <button class="lang-btn active">日本語</button>
+                <button class="lang-btn">English</button>
+            </div>
+            <h1 class="main-title" data-i18n="checkin-heading">デイリーチェックイン</h1>
+            <nav class="nav">
+                <a href="index.html" class="nav-link" data-i18n="nav-home">トップページ</a>
+                <a href="kakera-info.html" class="nav-link" data-i18n="nav-info">KAKERANFTとは</a>
+                <a href="mint.html" class="nav-link" data-i18n="nav-mint">ミント方法</a>
+                <a href="about.html" class="nav-link" data-i18n="nav-system">KAKERA排出システム</a>
+                <a href="exchange.html" class="nav-link" data-i18n="nav-exchange">交換方法</a>
+                <a href="characters.html" class="nav-link" data-i18n="nav-characters">キャラクター紹介</a>
+                <a href="my-kakera.html" class="nav-link" data-i18n="nav-mykakera">マイカケラ</a>
+                <a href="faq.html" class="nav-link" data-i18n="nav-faq">よくある質問</a>
+                <a href="checkin.html" class="nav-link active" data-i18n="nav-checkin">チェックイン</a>
+            </nav>
+        </header>
+
+        <!-- メインコンテンツ -->
+        <section class="checkin-content">
+            <p class="checkin-subtitle" data-i18n="checkin-subtitle">毎日ログインして1Pゲット！7日連続で+4Pボーナス！120PでKAKERA NFT AL権獲得！</p>
+
+            <!-- ローディング -->
+            <div id="loading" class="loading">
+                <i class="fa-solid fa-spinner fa-spin"></i>
+            </div>
+
+            <!-- ログインパネル（未ログイン時） -->
+            <div id="loginPanel" class="login-panel" style="display:none;">
+                <p data-i18n="checkin-login-desc">Discordアカウントでログインして、デイリーチェックインを始めよう！<br>毎日1回チェックインすると1P獲得。7日連続でボーナス+4P。120P貯めてKAKERA NFTのAL権をゲットしよう！</p>
+                <a href="/.netlify/functions/discord-auth" class="btn-discord">
+                    <i class="fa-brands fa-discord"></i>
+                    <span data-i18n="checkin-login-btn">Discordでログイン</span>
+                </a>
+            </div>
+
+            <!-- ユーザーパネル（ログイン後） -->
+            <div id="userPanel" class="user-panel">
+
+                <!-- AL獲得バナー -->
+                <div id="alBanner" class="al-banner">
+                    <div class="al-banner-title">🎉 <span data-i18n="checkin-al-title">KAKERA NFT AL権を獲得！</span></div>
+                    <p class="al-banner-text" data-i18n="checkin-al-desc">120P達成おめでとうございます！ポイントは0Pにリセットされました。<br>下のボタンからAL申請フォームにお進みください。</p>
+                    <a href="https://docs.google.com/forms/d/1TeLXzdC7gAdbmzSoYZmjEIPznh0QlF_YpZTKTD9oFew/viewform"
+                        target="_blank" rel="noopener noreferrer" class="btn-form">
+                        <i class="fa-solid fa-file-lines"></i>
+                        <span data-i18n="checkin-form-btn">AL申請フォームへ進む</span>
+                    </a>
+                </div>
+
+                <!-- 7日連続ボーナスバナー -->
+                <div id="bonusBanner" class="bonus-banner">
+                    <div class="bonus-banner-title">🔥 <span data-i18n="checkin-bonus-title">7日連続ボーナス！</span></div>
+                    <p class="bonus-banner-text" id="bonusBannerText">+4P ボーナスを獲得しました！</p>
+                </div>
+
+                <!-- ユーザー挨拶 -->
+                <p class="user-greeting">
+                    <span data-i18n="checkin-hello">こんにちは、</span>
+                    <strong id="usernameDisplay"></strong>
+                    <span data-i18n="checkin-san"> さん</span>
+                </p>
+
+                <!-- ポイントカード -->
+                <div class="points-card">
+                    <p class="points-label" data-i18n="checkin-points-label">現在のポイント</p>
+                    <div class="points-value"><i class="fa-solid fa-star"></i> <span id="pointsDisplay">0</span> pt</div>
+                    <p class="points-max">/ 120 pt</p>
+                    <div class="progress-wrap">
+                        <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+                    </div>
+                    <p class="progress-text" id="progressText"></p>
+                    <div class="stats-row">
+                        <span data-i18n="checkin-total">通算チェックイン:</span>
+                        <span><strong id="totalDisplay">0</strong> <span data-i18n="checkin-times">回</span></span>
+                        <span>🏆</span>
+                        <span data-i18n="checkin-al-count">AL権獲得:</span>
+                        <span><strong id="alCountDisplay">0</strong> <span data-i18n="checkin-times">回</span></span>
+                    </div>
+                </div>
+
+                <!-- 連続ログインカード -->
+                <div class="streak-card">
+                    <div class="streak-main">
+                        <span class="streak-fire">🔥</span>
+                        <span class="streak-days" id="streakDisplay">0</span>
+                        <span class="streak-label" data-i18n="checkin-streak-days">日連続</span>
+                    </div>
+                    <p class="streak-next" id="streakNext"></p>
+                </div>
+
+                <!-- チェックインボタン -->
+                <div class="checkin-btn-wrap">
+                    <button id="checkinBtn" class="btn-checkin" onclick="doCheckin()">
+                        <i class="fa-solid fa-check"></i>
+                        <span data-i18n="checkin-btn">今日のポイントを受け取る</span>
+                    </button>
+                </div>
+                <p id="checkinStatus" class="checkin-status"></p>
+
+                <!-- AL申請フォームリンク（120P達成者のみ表示） -->
+                <div id="formLink" style="display:none; text-align:center; margin-top: 16px;">
+                    <a href="https://docs.google.com/forms/d/1TeLXzdC7gAdbmzSoYZmjEIPznh0QlF_YpZTKTD9oFew/viewform"
+                        target="_blank" rel="noopener noreferrer"
+                        style="font-size:0.85rem; color:rgba(255,255,255,0.5); text-decoration:underline;">
+                        <span data-i18n="checkin-form-link">AL申請フォームはこちら</span>
+                    </a>
+                </div>
+
+                <button class="logout-link" onclick="logout()" data-i18n="checkin-logout">ログアウト</button>
+            </div>
+        </section>
+
+        <!-- フッター -->
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="policy.html" data-i18n="footer-policy">プライバシーポリシー・免責事項</a>
+            </div>
+            <p data-i18n="footer">&copy; 2025 CNP×RED° KAKERANFT</p>
+        </footer>
+    </div>
+
+    <script src="language.js"></script>
+    <script>
+        const TOKEN_KEY = 'kakera_jwt';
+        const AL_FORM_URL = 'https://docs.google.com/forms/d/1TeLXzdC7gAdbmzSoYZmjEIPznh0QlF_YpZTKTD9oFew/viewform';
+
+        function handleTokenFromURL() {
+            const params = new URLSearchParams(window.location.search);
+            const token = params.get('token');
+            const error = params.get('error');
+
+            if (token) {
+                localStorage.setItem(TOKEN_KEY, token);
+                window.history.replaceState({}, '', window.location.pathname);
+            }
+
+            if (error) {
+                window.history.replaceState({}, '', window.location.pathname);
+                return null;
+            }
+
+            return localStorage.getItem(TOKEN_KEY);
+        }
+
+        function updateStreakUI(streak) {
+            document.getElementById('streakDisplay').textContent = streak;
+            const nextEl = document.getElementById('streakNext');
+            if (streak === 0) {
+                nextEl.textContent = 'あと 7日 で連続ボーナス +4P！';
+            } else if (streak % 7 === 0) {
+                nextEl.textContent = '🎉 7日連続達成！次のサイクル開始！';
+            } else {
+                const daysUntilBonus = 7 - (streak % 7);
+                nextEl.textContent = `あと ${daysUntilBonus}日 で連続ボーナス +4P！`;
+            }
+        }
+
+        function updatePointsUI(data) {
+            document.getElementById('usernameDisplay').textContent = data.discord_username;
+            document.getElementById('pointsDisplay').textContent = data.points;
+            document.getElementById('totalDisplay').textContent = data.total_checkins;
+            document.getElementById('alCountDisplay').textContent = data.al_count;
+
+            const pct = Math.min((data.points / 120) * 100, 100);
+            document.getElementById('progressBar').style.width = pct + '%';
+
+            const remaining = 120 - data.points;
+            const progressText = document.getElementById('progressText');
+            if (remaining > 0) {
+                progressText.textContent = `あと ${remaining}P で KAKERA NFT AL権獲得！`;
+            } else {
+                progressText.textContent = '120P 達成！';
+            }
+
+            updateStreakUI(data.streak || 0);
+        }
+
+        function setAlreadyCheckedIn() {
+            const btn = document.getElementById('checkinBtn');
+            btn.disabled = true;
+            const status = document.getElementById('checkinStatus');
+            status.textContent = '本日のチェックインは完了しています ✓';
+            status.className = 'checkin-status already';
+        }
+
+        async function init() {
+            const token = handleTokenFromURL();
+            const loading = document.getElementById('loading');
+            const loginPanel = document.getElementById('loginPanel');
+            const userPanel = document.getElementById('userPanel');
+
+            if (!token) {
+                loading.style.display = 'none';
+                loginPanel.style.display = 'block';
+                return;
+            }
+
+            try {
+                const res = await fetch('/.netlify/functions/get-user', {
+                    headers: { Authorization: `Bearer ${token}` },
+                });
+
+                if (!res.ok) {
+                    localStorage.removeItem(TOKEN_KEY);
+                    loading.style.display = 'none';
+                    loginPanel.style.display = 'block';
+                    return;
+                }
+
+                const data = await res.json();
+                loading.style.display = 'none';
+                userPanel.style.display = 'block';
+                updatePointsUI(data);
+
+                if (data.already_checked_in) {
+                    setAlreadyCheckedIn();
+                }
+            } catch (e) {
+                loading.style.display = 'none';
+                loginPanel.style.display = 'block';
+            }
+        }
+
+        async function doCheckin() {
+            const token = localStorage.getItem(TOKEN_KEY);
+            if (!token) return;
+
+            const btn = document.getElementById('checkinBtn');
+            const status = document.getElementById('checkinStatus');
+            btn.disabled = true;
+            status.textContent = '';
+            status.className = 'checkin-status';
+
+            try {
+                const res = await fetch('/.netlify/functions/checkin', {
+                    method: 'POST',
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        'Content-Type': 'application/json',
+                    },
+                });
+
+                const data = await res.json();
+
+                if (data.already) {
+                    setAlreadyCheckedIn();
+                    return;
+                }
+
+                if (data.success) {
+                    updatePointsUI({
+                        discord_username: document.getElementById('usernameDisplay').textContent,
+                        points: data.points,
+                        al_count: data.al_count,
+                        total_checkins: data.total_checkins,
+                        streak: data.streak,
+                    });
+
+                    if (data.bonus_earned) {
+                        const bonusBanner = document.getElementById('bonusBanner');
+                        document.getElementById('bonusBannerText').textContent =
+                            `🔥 ${data.streak}日連続達成！ +${data.bonus_points}P ボーナスを獲得しました！`;
+                        bonusBanner.classList.add('show');
+                        status.textContent = `+${data.earned_points}P 獲得しました！（連続ボーナス +${data.bonus_points}P含む）`;
+                    } else {
+                        status.textContent = '+1P 獲得しました！';
+                    }
+                    status.className = 'checkin-status success';
+
+                    if (data.al_achieved) {
+                        document.getElementById('alBanner').classList.add('show');
+                        document.getElementById('formLink').style.display = 'block';
+                        status.textContent = '🎉 120P 達成！AL権を獲得しました！';
+                    }
+
+                    setAlreadyCheckedIn();
+                }
+            } catch (e) {
+                btn.disabled = false;
+                status.textContent = 'エラーが発生しました。もう一度お試しください。';
+                status.className = 'checkin-status error';
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem(TOKEN_KEY);
+            document.getElementById('userPanel').style.display = 'none';
+            document.getElementById('loginPanel').style.display = 'block';
+        }
+
+        init();
+    </script>
+</body>
+
+</html>

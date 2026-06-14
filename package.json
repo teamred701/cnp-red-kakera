@@ -1,0 +1,9 @@
+{
+  "name": "kakera-site",
+  "version": "1.0.0",
+  "description": "CNP×RED° KAKERANFT site with daily check-in",
+  "dependencies": {
+    "@notionhq/client": "^2.2.0",
+    "jsonwebtoken": "^9.0.0"
+  }
+}

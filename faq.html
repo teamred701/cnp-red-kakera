@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8396986479593606" crossorigin="anonymous"></script>
+    <title data-i18n="faq-title">よくある質問 - CNP×RED° KAKERANFT</title>
+
+    <!-- OGP設定 -->
+    <meta property="og:title" content="よくある質問 - CNP×RED° KAKERANFT" />
+    <meta property="og:description" content="CNP×RED° KAKERANFTのミント・AL付与・ウォレットに関するよくある質問をまとめています。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kakera.click/faq.html" />
+    <meta property="og:image" content="https://kakera.click/ogp_image.png" />
+    <meta property="og:site_name" content="CNP×RED° KAKERANFT" />
+    <meta property="og:locale" content="ja_JP" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="よくある質問 - CNP×RED° KAKERANFT" />
+    <meta name="twitter:description" content="CNP×RED° KAKERANFTのミント・AL付与・ウォレットに関するよくある質問をまとめています。" />
+    <meta name="twitter:image" content="https://kakera.click/ogp_image.png" />
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* ─── FAQ アコーディオン ─── */
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .faq-item {
+            background: rgba(0, 0, 0, 0.55);
+            border: 2px solid rgba(255, 40, 40, 0.35);
+            border-left: 5px solid rgba(255, 40, 40, 0.5);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .faq-item:hover {
+            border-color: rgba(255, 60, 60, 0.75);
+            border-left-color: #ff3030;
+            box-shadow: 0 4px 20px rgba(255, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.65);
+        }
+
+        .faq-item.open {
+            border-color: rgba(255, 60, 60, 0.9);
+            border-left-color: #ff2020;
+            box-shadow: 0 0 24px rgba(255, 0, 0, 0.25);
+            background: rgba(20, 0, 0, 0.65);
+        }
+
+        .faq-question {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px 24px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .q-badge {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #ff2020, #aa0000);
+            color: #fff;
+            font-weight: 800;
+            font-size: 16px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 12px rgba(255, 30, 30, 0.7), 0 2px 6px rgba(0,0,0,0.5);
+            letter-spacing: 0.02em;
+        }
+
+        .q-text {
+            flex: 1;
+            font-size: 17px;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.5;
+            letter-spacing: 0.02em;
+            text-shadow:
+                0 0 12px rgba(255, 100, 100, 0.4),
+                1px 1px 3px rgba(0, 0, 0, 0.9);
+        }
+
+        .faq-arrow {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            background: rgba(255, 40, 40, 0.15);
+            border: 1px solid rgba(255, 40, 40, 0.4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ff5050;
+            font-size: 12px;
+            transition: transform 0.25s, background 0.2s;
+        }
+
+        .faq-item.open .faq-arrow {
+            transform: rotate(180deg);
+            background: rgba(255, 40, 40, 0.3);
+        }
+
+        /* 回答エリア */
+        .faq-answer {
+            display: none;
+            padding: 4px 24px 22px 76px;
+            border-top: 1px solid rgba(255, 40, 40, 0.2);
+            background: rgba(255, 0, 0, 0.03);
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+
+        .a-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            color: #ff7070;
+            background: rgba(255, 50, 50, 0.12);
+            border: 1px solid rgba(255, 60, 60, 0.4);
+            border-radius: 4px;
+            padding: 3px 10px;
+            margin: 14px 0 10px;
+        }
+
+        .faq-answer p {
+            font-size: 15px;
+            color: #ddd;
+            line-height: 1.9;
+            margin-bottom: 10px;
+        }
+
+        .faq-answer p:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-example {
+            background: rgba(255, 20, 20, 0.1);
+            border-left: 4px solid #ff3030;
+            border-radius: 6px;
+            padding: 14px 18px;
+            margin: 12px 0;
+            font-size: 14px;
+            color: #f0d0d0;
+            line-height: 1.9;
+        }
+
+        .faq-note {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 8px;
+            padding: 13px 16px;
+            margin-top: 12px;
+        }
+
+        .faq-note .note-icon {
+            font-size: 16px;
+            flex-shrink: 0;
+            padding-top: 1px;
+        }
+
+        .faq-note p {
+            margin: 0;
+            font-size: 13px;
+            color: #bbb;
+            line-height: 1.8;
+        }
+
+        .faq-highlight {
+            color: #ff7070;
+            font-weight: 700;
+            text-shadow: 0 0 8px rgba(255, 80, 80, 0.5);
+        }
+
+        /* ─── その他のご質問 ─── */
+        .contact-info-box {
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 40, 40, 0.35);
+            border-left: 5px solid rgba(255, 40, 40, 0.7);
+            border-radius: 12px;
+            padding: 28px 30px;
+            margin-top: 16px;
+        }
+
+        .contact-info-lead {
+            font-size: 15px;
+            color: #ddd;
+            line-height: 1.8;
+            margin-bottom: 24px;
+            text-align: left !important;
+        }
+
+        .contact-command {
+            display: inline-block;
+            background: rgba(255, 40, 40, 0.18);
+            color: #ff8080;
+            font-family: monospace;
+            font-size: 15px;
+            font-weight: 700;
+            padding: 2px 10px;
+            border-radius: 5px;
+            border: 1px solid rgba(255, 60, 60, 0.4);
+            letter-spacing: 0.05em;
+        }
+
+        .contact-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .contact-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 14px 16px;
+        }
+
+        .contact-step-icon {
+            flex-shrink: 0;
+            width: 34px;
+            height: 34px;
+            background: rgba(255, 40, 40, 0.2);
+            border: 1px solid rgba(255, 40, 40, 0.4);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ff6060;
+            font-size: 14px;
+        }
+
+        .contact-step-text {
+            font-size: 14px;
+            color: #ccc;
+            line-height: 1.75;
+            padding-top: 6px;
+        }
+
+        .contact-step-text strong {
+            color: #fff;
+        }
+
+        .contact-phase {
+            margin-bottom: 28px;
+        }
+
+        .contact-phase:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-phase-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .contact-phase-num {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff2020, #aa0000);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            padding: 4px 12px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(255, 30, 30, 0.5);
+            flex-shrink: 0;
+        }
+
+        .contact-phase-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+
+        .contact-phase-note {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+            margin: 0 0 12px 58px;
+            font-style: italic;
+            text-align: left !important;
+        }
+
+        .contact-link {
+            display: inline-block;
+            margin-top: 6px;
+            color: #ff8080;
+            font-size: 13px;
+            word-break: break-all;
+            text-decoration: underline;
+        }
+
+        .contact-link:hover {
+            color: #ffaaaa;
+        }
+
+        .contact-x-alt {
+            margin-top: 24px;
+            text-align: center;
+        }
+
+        .contact-x-alt-label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.35);
+            letter-spacing: 0.15em;
+            margin-bottom: 12px;
+        }
+
+        .contact-x-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 13px 22px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s, border-color 0.2s, transform 0.2s;
+        }
+
+        .contact-x-btn:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+            color: #fff;
+        }
+
+        .contact-x-btn i {
+            font-size: 18px;
+        }
+
+        /* ─── お問い合わせ ─── */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .contact-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 40, 40, 0.25);
+            border-radius: 12px;
+            padding: 28px 20px;
+            text-decoration: none;
+            color: #fff;
+            transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+        }
+
+        .contact-card:hover {
+            border-color: rgba(255, 40, 40, 0.7);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 24px rgba(255, 30, 30, 0.2);
+            color: #fff;
+        }
+
+        .contact-card .contact-icon {
+            font-size: 32px;
+        }
+
+        .contact-card .contact-name {
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .contact-card .contact-desc {
+            font-size: 13px;
+            color: #aaa;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .contact-notice {
+            margin-top: 18px;
+            background: rgba(255, 30, 30, 0.06);
+            border: 1px solid rgba(255, 30, 30, 0.2);
+            border-radius: 8px;
+            padding: 14px 18px;
+            font-size: 13px;
+            color: #aaa;
+            line-height: 1.8;
+        }
+
+        .contact-notice strong {
+            color: #ff6060;
+        }
+
+        @media (max-width: 600px) {
+            .faq-answer {
+                padding-left: 20px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ヘッダー -->
+        <header class="header">
+            <div class="language-switcher">
+                <button class="lang-btn active">日本語</button>
+                <button class="lang-btn">English</button>
+            </div>
+            <h1 class="main-title" data-i18n="faq-title">よくある質問</h1>
+            <nav class="nav">
+                <a href="index.html" class="nav-link" data-i18n="nav-home">トップページ</a>
+                <a href="kakera-info.html" class="nav-link" data-i18n="nav-info">KAKERANFTとは</a>
+                <a href="mint.html" class="nav-link" data-i18n="nav-mint">ミント方法</a>
+                <a href="about.html" class="nav-link" data-i18n="nav-system">KAKERA排出システム</a>
+                <a href="exchange.html" class="nav-link" data-i18n="nav-exchange">交換方法</a>
+                <a href="characters.html" class="nav-link" data-i18n="nav-characters">キャラクター紹介</a>
+                <a href="my-kakera.html" class="nav-link" data-i18n="nav-mykakera">マイカケラ</a>
+                <a href="checkin.html" class="nav-link" data-i18n="nav-checkin">チェックイン</a>
+            </nav>
+        </header>
+
+        <!-- メインコンテンツ -->
+        <section class="about-content">
+
+            <!-- FAQ セクション -->
+            <div class="about-section">
+                <h2 class="section-title"><i class="fa-solid fa-circle-question"></i> <span data-i18n="faq-section-title">ミント・AL付与に関するよくある質問</span></h2>
+                <p class="section-text" data-i18n="faq-section-desc">
+                    ミントやAL（アローリスト）付与についてよくいただくご質問をまとめました。
+                </p>
+
+                <div class="faq-list">
+
+                    <!-- Q1 -->
+                    <div class="faq-item open">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <div class="q-badge">Q</div>
+                            <div class="q-text" data-i18n="faq-q1">ミント権はいつ付与されますか？</div>
+                            <div class="faq-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="a-badge">ANSWER</div>
+                            <p data-i18n="faq-a1">当選した<span class="faq-highlight">翌月</span>にミントが可能となります。</p>
+                            <div class="faq-example">
+                                <div style="font-size:11px; color:#ff7070; font-weight:700; letter-spacing:0.1em; margin-bottom:8px;">📋 例</div>
+                                <i class="fa-solid fa-calendar-check" style="color:#ff6060;"></i>
+                                2月末の当選 → <strong>3月</strong>にミント可能<br>
+                                <i class="fa-solid fa-calendar-check" style="color:#ff6060;"></i>
+                                3月末の当選 → <strong>4月</strong>にミント可能
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <div class="q-badge">Q</div>
+                            <div class="q-text" data-i18n="faq-q2">付与されるのはNFTそのものですか？</div>
+                            <div class="faq-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="a-badge">ANSWER</div>
+                            <p>付与されるのは<span class="faq-highlight">NFTではなく、ミントできる権利（AL）</span>です。</p>
+                            <div class="faq-note">
+                                <div class="note-icon">⚠️</div>
+                                <p>NFTを取得するには、ご自身でミント操作を行う必要があります。自動的にNFTが送付されるわけではありません。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q3 -->
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <div class="q-badge">Q</div>
+                            <div class="q-text" data-i18n="faq-q3">AL付与の条件は何ですか？</div>
+                            <div class="faq-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="a-badge">ANSWER</div>
+                            <p>AL付与には、以下の条件を満たしている必要があります。</p>
+                            <div class="faq-example">
+                                <i class="fa-solid fa-check" style="color:#ff6060;"></i>
+                                <strong>ウォレットとDiscordが接続済みであること</strong>
+                            </div>
+                            <div class="faq-note">
+                                <div class="note-icon">💡</div>
+                                <p>未接続の場合はALが付与されません。Discord接続方法については<a href="https://discord.com/channels/1197855614232182856/1365864908561842277" target="_blank" rel="noopener noreferrer" style="color:#ff6060;">こちら</a>をご覧ください。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q4 -->
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <div class="q-badge">Q</div>
+                            <div class="q-text" data-i18n="faq-q4">ミントに費用はかかりますか？</div>
+                            <div class="faq-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="a-badge">ANSWER</div>
+                            <p>ミント自体の価格とは別に、<span class="faq-highlight">1件あたり約 0.02 SOL のネットワーク手数料（ガス代）</span>が別途必要となります。</p>
+                            <div class="faq-note">
+                                <div class="note-icon">💰</div>
+                                <p>SOLの価格は変動します。ミント前にウォレット残高をご確認ください。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q5 -->
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <div class="q-badge">Q</div>
+                            <div class="q-text" data-i18n="faq-q5">ミントはどこで行いますか？</div>
+                            <div class="faq-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="a-badge">ANSWER</div>
+                            <p>以下の公式ミントサイトから行ってください。</p>
+                            <div class="faq-example">
+                                <i class="fa-solid fa-globe" style="color:#ff6060;"></i>
+                                <a href="https://cnp-red-kakera.welcome-mint.site/" target="_blank" rel="noopener noreferrer" style="color:#ff8080;">https://cnp-red-kakera.welcome-mint.site/</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q7 -->
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <div class="q-badge">Q</div>
+                            <div class="q-text" data-i18n="faq-q7">ミントは必ずしなければなりませんか？</div>
+                            <div class="faq-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="a-badge">ANSWER</div>
+                            <p>いいえ、ミントするかどうかは<span class="faq-highlight">ご自身のご判断</span>によります。権利を取得した場合でも、ミントを行わないことは可能です。</p>
+                        </div>
+                    </div>
+
+                    <!-- Q8 -->
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <div class="q-badge">Q</div>
+                            <div class="q-text">KAKERANFTを11種類全部集めるとどうなりますか？</div>
+                            <div class="faq-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="a-badge">ANSWER</div>
+                            <p><span class="faq-highlight">CNP RED°</span> と交換できます。</p>
+                            <div class="faq-note">
+                                <div class="note-icon">💡</div>
+                                <p>交換方法の詳細は<a href="exchange.html" style="color:#ff7070;">交換方法ページ</a>をご覧ください。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- お問い合わせ -->
+            <div class="about-section">
+                <h2 class="section-title"><i class="fa-solid fa-headset"></i> お問い合わせ</h2>
+                <div class="contact-info-box" style="text-align:center; padding: 32px 24px;">
+                    <p style="margin-bottom: 24px; font-size: 1rem; color: rgba(255,255,255,0.85);">ご質問・ご不明な点はお問い合わせフォームよりお気軽にご連絡ください。</p>
+                    <a href="https://forms.gle/pAAvFREajrgUQtU87" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display:inline-flex; align-items:center; gap:8px; font-size:1rem;">
+                        <i class="fa-solid fa-paper-plane"></i> お問い合わせフォームへ
+                    </a>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-section">
+                <a href="mint.html" class="btn-primary" data-i18n="btn-mint">ミント方法</a>
+                <a href="exchange.html" class="btn-primary" data-i18n="btn-exchange">交換方法</a>
+                <a href="index.html" class="btn-secondary" data-i18n="btn-back">トップページへ</a>
+            </div>
+        </section>
+
+        <!-- フッター -->
+        <footer class="footer">
+            <p data-i18n="footer">&copy; 2025 CNP×RED° KAKERANFT</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleFAQ(questionEl) {
+            const item = questionEl.closest('.faq-item');
+            item.classList.toggle('open');
+        }
+    </script>
+    <script src="language.js"></script>
+</body>
+</html>

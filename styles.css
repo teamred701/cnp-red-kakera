@@ -1,0 +1,314 @@
+/* リセット */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro', 'Yu Gothic Medium', '游ゴシック Medium', YuGothic, '游ゴシック体', 'Meiryo', sans-serif;
+    background-image: url('CNP_RED_banner_BG01.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    color: #fff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ヘッダー */
+.header {
+    text-align: center;
+    padding: 40px 20px;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+/* 言語切り替え */
+.language-switcher {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 5px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 25px;
+    padding: 5px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.lang-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.lang-btn:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.lang-btn.active {
+    background: rgba(255, 0, 0, 0.6);
+    color: #fff;
+    box-shadow:
+        0 0 10px rgba(255, 0, 0, 0.5),
+        inset 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.main-title {
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow:
+        0 0 10px rgba(255, 0, 0, 0.8),
+        0 0 20px rgba(255, 0, 0, 0.6),
+        0 0 30px rgba(255, 0, 0, 0.4),
+        2px 2px 4px rgba(0, 0, 0, 0.8);
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+}
+
+/* ヒーローセクション */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.intro-image {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.intro-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 15px;
+}
+
+/* コンテンツセクション */
+.content {
+    padding: 40px;
+    margin-bottom: 40px;
+}
+
+.description h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow:
+        0 0 10px rgba(255, 0, 0, 0.6),
+        2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.description p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    margin-bottom: 30px;
+}
+
+.marketplace-link {
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    background: rgba(255, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 15px;
+    padding: 12px 30px;
+    font-weight: bold;
+    font-size: 1.3rem;
+    text-shadow:
+        0 0 10px rgba(255, 0, 0, 0.6),
+        2px 2px 4px rgba(0, 0, 0, 0.9);
+    box-shadow:
+        0 0 20px rgba(255, 0, 0, 0.4),
+        inset 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.marketplace-link:hover {
+    background: rgba(255, 0, 0, 0.5);
+    border-color: #fff;
+}
+
+.cnpred-link {
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50px;
+    padding: 10px 25px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 1.1rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    margin-top: 15px;
+}
+
+.cnpred-link:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: #fff;
+    transform: scale(1.05);
+    box-shadow:
+        0 0 20px rgba(255, 255, 255, 0.5),
+        0 0 30px rgba(255, 255, 255, 0.3);
+    text-shadow:
+        0 0 10px rgba(255, 255, 255, 0.9),
+        1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* ボタンコンテナ */
+.button-container {
+    text-align: center;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* プライマリボタン */
+.btn-primary {
+    display: inline-block;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    border: 2px solid #fff;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.btn-primary:hover {
+    background: #fff;
+    color: #c00;
+    transform: scale(1.1);
+    box-shadow:
+        0 0 20px rgba(255, 255, 255, 0.8),
+        0 0 30px rgba(255, 0, 0, 0.5);
+}
+
+/* フッター */
+.footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+.footer-links {
+    margin-bottom: 20px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 0 10px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer p {
+    font-size: 0.9rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* ポリシーページ */
+.policy-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    margin-top: 40px;
+    text-align: left;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.policy-content h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    margin-top: 30px;
+    text-align: left;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.policy-content p {
+    font-size: 1rem;
+    line-height: 1.8;
+    text-align: left;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .language-switcher {
+        top: 10px;
+        right: 10px;
+        padding: 3px;
+    }
+
+    .lang-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+
+    .main-title {
+        font-size: 2rem;
+    }
+
+    .description h2 {
+        font-size: 1.5rem;
+    }
+
+    .description p {
+        font-size: 1rem;
+    }
+
+    .content {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .language-switcher {
+        position: static;
+        margin: 0 auto 20px;
+        width: fit-content;
+    }
+
+    .lang-btn {
+        padding: 5px 10px;
+        font-size: 0.75rem;
+    }
+
+    .main-title {
+        font-size: 1.5rem;
+    }
+
+    .header {
+        padding: 20px 10px;
+    }
+}

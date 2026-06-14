@@ -1,0 +1,646 @@
+/* ナビゲーション（about.cssから共通化） */
+.nav {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.nav-link:hover {
+    background: #fff;
+    color: #c00;
+    transform: scale(1.05);
+}
+
+/* ウォレットセクション */
+.wallet-section {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    padding: 20px;
+}
+
+/* 接続ボタンセクション */
+#wallet-connect-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.wallet-intro {
+    font-size: 1.2rem;
+    color: #fff;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+    line-height: 1.8;
+}
+
+.connect-wallet-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 40px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(135deg, #ab9ff2 0%, #7c3aed 50%, #5b21b6 100%);
+    border: 3px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    box-shadow:
+        0 4px 15px rgba(124, 58, 237, 0.4),
+        0 0 30px rgba(124, 58, 237, 0.2);
+}
+
+.connect-wallet-btn:hover {
+    transform: scale(1.05);
+    box-shadow:
+        0 6px 25px rgba(124, 58, 237, 0.6),
+        0 0 40px rgba(124, 58, 237, 0.4);
+    border-color: rgba(255, 255, 255, 0.7);
+}
+
+.connect-wallet-btn .phantom-icon {
+    width: 28px;
+    height: 28px;
+}
+
+/* ============================================================
+   ウォレット選択モーダル（RainbowKit風）
+   ============================================================ */
+#wallet-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.wallet-modal-content {
+    background: linear-gradient(145deg, #1a1a2e 0%, #16132b 100%);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    padding: 0;
+    width: 380px;
+    max-width: 90vw;
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(124, 58, 237, 0.15);
+    overflow: hidden;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.wallet-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 24px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.wallet-modal-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.wallet-modal-close {
+    background: rgba(255, 255, 255, 0.08);
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.wallet-modal-close:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+}
+
+#wallet-list {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.wallet-modal-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    background: transparent;
+    border: 2px solid transparent;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+    text-align: left;
+    color: #fff;
+    font-family: inherit;
+}
+
+.wallet-modal-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(124, 58, 237, 0.4);
+}
+
+.wallet-modal-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+}
+
+.wallet-modal-name {
+    flex: 1;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.wallet-modal-status {
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.wallet-modal-status.detected {
+    background: rgba(0, 200, 83, 0.15);
+    color: #4ade80;
+    border: 1px solid rgba(0, 200, 83, 0.3);
+}
+
+.wallet-modal-status.not-installed {
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+.wallet-modal-footer {
+    padding: 16px 24px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    text-align: center;
+}
+
+.wallet-modal-footer-text {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.4);
+    line-height: 1.5;
+}
+
+/* 接続済みセクション */
+#wallet-connected-section {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(124, 58, 237, 0.5);
+    border-radius: 20px;
+    padding: 25px 35px;
+    box-shadow: 0 0 25px rgba(124, 58, 237, 0.2);
+}
+
+.wallet-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.wallet-status {
+    width: 12px;
+    height: 12px;
+    background: #00ff00;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(0, 255, 0, 0.6);
+    animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.wallet-label {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+#wallet-address {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ab9ff2;
+    font-family: 'Courier New', monospace;
+    text-shadow:
+        0 0 10px rgba(171, 159, 242, 0.5),
+        1px 1px 2px rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+}
+
+#wallet-address:hover {
+    color: #c4b5fd;
+}
+
+.disconnect-btn {
+    padding: 10px 25px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.disconnect-btn:hover {
+    background: rgba(255, 0, 0, 0.3);
+    border-color: rgba(255, 0, 0, 0.5);
+    color: #fff;
+}
+
+/* NFTセクション */
+#nft-section {
+    display: none;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.nft-section-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 15px;
+    text-shadow:
+        0 0 10px rgba(255, 0, 0, 0.8),
+        0 0 20px rgba(255, 0, 0, 0.6),
+        2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* NFT数表示 */
+#nft-count {
+    display: none;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #00ff00;
+    margin-bottom: 30px;
+    text-shadow:
+        0 0 10px rgba(0, 255, 0, 0.6),
+        1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* ローディング */
+#nft-loading {
+    display: none;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    border-top: 4px solid #ab9ff2;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loading-text {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* 空メッセージ */
+#nft-empty {
+    display: none;
+    text-align: center;
+    padding: 60px 20px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+}
+
+.empty-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.empty-text {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+.marketplace-cta {
+    display: inline-block;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    background: rgba(255, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.marketplace-cta:hover {
+    background: rgba(255, 0, 0, 0.5);
+    border-color: #fff;
+    transform: scale(1.05);
+}
+
+/* エラー表示 */
+#nft-error {
+    display: none;
+    text-align: center;
+    padding: 40px 20px;
+    background: rgba(255, 0, 0, 0.1);
+    border: 2px solid rgba(255, 0, 0, 0.3);
+    border-radius: 20px;
+}
+
+.error-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: #ff4444;
+}
+
+.error-message {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* NFTグリッド */
+#nft-grid {
+    display: none;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 25px;
+    padding: 10px;
+}
+
+.nft-card {
+    background: rgba(0, 0, 0, 0.7);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.nft-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 0, 0, 0.6);
+    box-shadow:
+        0 8px 30px rgba(255, 0, 0, 0.4),
+        0 0 40px rgba(255, 0, 0, 0.2);
+}
+
+.nft-image {
+    width: 100%;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.nft-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.nft-card:hover .nft-image img {
+    transform: scale(1.05);
+}
+
+.nft-name {
+    padding: 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ============================================================
+   交換済み CNP RED° セクション
+   ============================================================ */
+#cnpred-section {
+    display: none;
+    max-width: 1100px;
+    margin: 40px auto 0;
+    padding: 20px;
+    border-top: 2px solid rgba(255, 215, 0, 0.3);
+}
+
+.cnpred-section-title {
+    text-shadow:
+        0 0 10px rgba(255, 215, 0, 0.8),
+        0 0 20px rgba(255, 215, 0, 0.6),
+        2px 2px 4px rgba(0, 0, 0, 0.8) !important;
+}
+
+#cnpred-count {
+    display: none;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffd700;
+    margin-bottom: 30px;
+    text-shadow:
+        0 0 10px rgba(255, 215, 0, 0.6),
+        1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+#cnpred-empty {
+    display: none;
+    text-align: center;
+    padding: 60px 20px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(255, 215, 0, 0.2);
+    border-radius: 20px;
+}
+
+#cnpred-empty .empty-icon {
+    color: #ffd700;
+}
+
+#cnpred-grid {
+    display: none;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 25px;
+    padding: 10px;
+}
+
+.cnpred-card {
+    border-color: rgba(255, 215, 0, 0.3) !important;
+}
+
+.cnpred-card:hover {
+    border-color: rgba(255, 215, 0, 0.6) !important;
+    box-shadow:
+        0 8px 30px rgba(255, 215, 0, 0.4),
+        0 0 40px rgba(255, 215, 0, 0.2) !important;
+}
+
+/* CTAセクション */
+.cta-section {
+    text-align: center;
+    margin-top: 40px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-secondary {
+    display: inline-block;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+    transform: scale(1.05);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .connect-wallet-btn {
+        padding: 15px 30px;
+        font-size: 1.1rem;
+    }
+
+    .nft-section-title {
+        font-size: 1.6rem;
+    }
+
+    #nft-grid,
+    #cnpred-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+    }
+
+    .cta-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .language-switcher {
+        position: static;
+        margin: 0 auto 20px;
+        width: fit-content;
+    }
+
+    .lang-btn {
+        padding: 5px 10px;
+        font-size: 0.75rem;
+    }
+
+    .connect-wallet-btn {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+
+    .wallet-intro {
+        font-size: 1rem;
+    }
+
+    #wallet-connected-section {
+        padding: 20px;
+    }
+
+    #wallet-address {
+        font-size: 1rem;
+    }
+
+    .nft-section-title {
+        font-size: 1.3rem;
+    }
+
+    #nft-grid,
+    #cnpred-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 12px;
+    }
+
+    .nft-name {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+}
